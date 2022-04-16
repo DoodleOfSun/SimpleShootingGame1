@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerFire : MonoBehaviour
 {
@@ -15,13 +16,15 @@ public class PlayerFire : MonoBehaviour
         
     }
 
+    void OnFire()
+    {
+        GameObject bullet = Instantiate(bulletFactory);
+        bullet.transform.position = firePosition.transform.position;
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            GameObject bullet = Instantiate(bulletFactory);
-            bullet.transform.position = firePosition.transform.position;
-        }
     }
 }
